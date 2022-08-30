@@ -1,7 +1,8 @@
 main: io.github.arewena.Main
-name: spaceChest
+name: Aphelios
 author: CosyTreq
 version: 1.0
 api-version: "1.19"
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:1.6.10
+  - io.github.monun:kommand-core:2.13.0
