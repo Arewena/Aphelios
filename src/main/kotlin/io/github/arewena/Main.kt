@@ -1,19 +1,18 @@
 package io.github.arewena
 
 
-import org.bukkit.event.Listener
-import org.bukkit.plugin.java.JavaPlugin
 import io.github.monun.kommand.kommand
-import org.bukkit.Material
-import org.bukkit.inventory.ItemStack
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text
+import org.bukkit.Bukkit
+import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.event.inventory.InventoryDragEvent
-import org.bukkit.event.inventory.InventoryInteractEvent
-import org.bukkit.event.inventory.InventoryMoveItemEvent
+import org.bukkit.event.Listener
+import org.bukkit.event.inventory.*
 import org.bukkit.event.player.PlayerDropItemEvent
+import org.bukkit.inventory.ItemStack
+import org.bukkit.plugin.java.JavaPlugin
 
 
 class Main : JavaPlugin(), Listener {
@@ -56,17 +55,37 @@ class Main : JavaPlugin(), Listener {
     }
 
 
+
     @EventHandler
-    fun InventoryMove(e: PlayerDropItemEvent) {
-         if (e.itemDrop.itemStack.displayName().toString().contains("월광포화") ||
-             e.itemDrop.itemStack.displayName().toString().contains("위상 변화") ||
-             e.itemDrop.itemStack.displayName().toString().contains("무기 교체 시스템") ||
-             e.itemDrop.itemStack.displayName().toString().contains("무기 별 스킬 이름(임시)")) {
-             e.isCancelled = true
-         }
+    fun itemMove(e: InventoryPickupItemEvent) {
+        logger.info(e.item.name)
+        if (e.item.name == "월광포화" ||
+            e.item.name == "위상 변화" ||
+            e.item.name == "무기 교체 시스템" ||
+            e.item.name == "무기 별 스킬 이름(임시)") {
+            e.isCancelled = true
+        }
     }
+
+    @EventHandler
+    fun onDrop(e: PlayerDropItemEvent) {
+        val p = e.player
+        if (e.itemDrop.itemStack.itemMeta.isUnbreakable) {
+            e.isCancelled = true
+        }
+    }
+
+    @EventHandler
+    fun onClick(e:InventoryClickEvent) {
+
+        if (e.currentItem.toString().contains("월광포화") || e.cursor.toString().contains("월광포화")) { e.isCancelled = true }
+        else if (e.currentItem.toString().contains("위상 변화") || e.cursor.toString().contains("위상 변화")) { e.isCancelled = true }
+        else if (e.currentItem.toString().contains("무기 교체 시스템") || e.cursor.toString().contains("무기 교체 시스템")) { e.isCancelled = true }
+        else if (e.currentItem.toString().contains("무기 별 스킬 이름(임시)") || e.cursor.toString().contains("무기 별 스킬 이름(임시)")) { e.isCancelled = true }
+    }
+
+
     
 
 }
-
 
