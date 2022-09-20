@@ -62,7 +62,7 @@ object Items {
     )
 
 
-    val AAWeapon = mutableListOf(
+    var AAWeapon = mutableListOf(
         ItemStack(Material.BLACK_DYE, 50).apply {
             editMeta {
                 it.displayName(text("만월총"))

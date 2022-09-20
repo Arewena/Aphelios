@@ -23,10 +23,12 @@ class Main : JavaPlugin() {
                     for (i in ItemSet) {
                         player.inventory.setItem(i.key, i.value)
                     }
-                    for (i in 7..8) {
+                    for (i in 8 downTo 7) {
                         player.inventory.setItem(i, AAWeapon[i - 7])
+                        AAWeapon.removeAt(0)
                     }
 
+                    player.sendMessage(AAWeapon.toString())
                     QSkillNameChange(player)
                 }
             }
