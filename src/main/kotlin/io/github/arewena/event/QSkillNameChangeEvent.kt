@@ -3,7 +3,7 @@ package io.github.arewena.Item
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.entity.Player
-import org.bukkit.inventory.Inventory
+
 
 
 fun QSkillNameChange(player : Player) {
@@ -52,10 +52,19 @@ fun QSkillNameChange(player : Player) {
             player.inventory.setItem(0, player.inventory.getItem(0)?.apply {
                 editMeta {
                     it.displayName(
-                        text("반월의 ").color(NamedTextColor.RED).append(player.inventory.getItem(0)?.displayName()!!)
+                        text("반월의 ").color(NamedTextColor.WHITE).append(player.inventory.getItem(0)?.displayName()!!)
                     )
                 }
             })
         }
+    }
+    else {
+        player.inventory.setItem(0, player.inventory.getItem(0)?.apply {
+            editMeta {
+                it.displayName(
+                    text("속박의 ").color(NamedTextColor.LIGHT_PURPLE).append(player.inventory.getItem(0)?.displayName()!!)
+                )
+            }
+        })
     }
 }

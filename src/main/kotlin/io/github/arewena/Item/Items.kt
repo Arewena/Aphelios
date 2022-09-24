@@ -29,9 +29,9 @@ object Items {
         },
         ItemStack(Material.BROWN_DYE).apply {
             editMeta {
-                it.displayName(text("속박의 월식"))
+                it.displayName(text("월식").color(NamedTextColor.WHITE) )
                 it.lore(mutableListOf(
-                    text("쥬변에 둔화가 걸린 적을").color(NamedTextColor.WHITE),
+                    text("주변에 둔화가 걸린 적을").color(NamedTextColor.WHITE),
                     text("1초간 바로 속박합니다.").color(NamedTextColor.WHITE))
                         as List<net.kyori.adventure.text.Component>?)
             }
